@@ -1,0 +1,83 @@
+A5 story numbers. Source: A4 pipeline output, Yahoo Finance interim ETF prices.
+Measure: change in asset managers' net position, percentage points of last week's open interest.
+Spike week: top 10% of weekly % increases in the index's own implied vol (VIX, VXN, VXD, RVX).
+Coverage: 2006-06-13 to 2026-09-29 | 1060 report dates
+
+0. Hook: two Nasdaq-100 spike weeks
+  {'spike_date': '2018-02-06', 'release': 'Friday, February 9, 2018', 'vxn_before': 20.35, 'vxn': 26.7, 'vxn_pct': 31.2, 'spike': True, 'wk0': -2.76, 'wk0_ret': -3.79, 'wk1_date': '2018-02-13', 'wk1': -12.12, 'wk1_ret': -1.61, 'wk1_long': -5.66, 'wk1_short': 6.47, 'wk1_rank_low': 6, 'net_contracts': [4521, -25264]}
+    next week's change ranks 6 of 1059 weeks from the most negative; net contracts 4,521 at the spike, -25,264 a week later
+  {'spike_date': '2025-04-08', 'release': 'Friday, April 11, 2025', 'vxn_before': 24.8, 'vxn': 39.56, 'vxn_pct': 59.52, 'spike': True, 'wk0': -4.13, 'wk0_ret': -11.98, 'wk1_date': '2025-04-15', 'wk1': 1.02, 'wk1_ret': 10.08, 'wk1_long': 0.34, 'wk1_short': -0.68, 'wk1_rank_low': 690, 'net_contracts': [37227, 39825]}
+    next week's change ranks 690 of 1059 weeks from the most negative; net contracts 37,227 at the spike, 39,825 a week later
+
+1/3. Spike week, all 106 spikes per index (A4 Q4 price_control, horizon 0)
+  S&P 500       raw -2.35 (-2.81 to -1.90) | price held fixed -0.71 (-1.14 to -0.27) | share of raw gap gone 70% | spike weeks down 98% | mean ETF return spike -3.28% vs other +0.59% | slope 0.45 pts per 1% return
+  Nasdaq-100    raw -2.40 (-3.24 to -1.56) | price held fixed -0.19 (-1.10 to +0.72) | share of raw gap gone 92% | spike weeks down 93% | mean ETF return spike -3.72% vs other +0.77% | slope 0.46 pts per 1% return
+  Dow           raw -1.84 (-2.53 to -1.14) | price held fixed -0.08 (-0.90 to +0.73) | share of raw gap gone 95% | spike weeks down 92% | mean ETF return spike -2.87% vs other +0.51% | slope 0.60 pts per 1% return
+  Russell 2000  raw -2.47 (-3.12 to -1.82) | price held fixed -0.38 (-0.94 to +0.18) | share of raw gap gone 85% | spike weeks down 97% | mean ETF return spike -4.13% vs other +0.65% | slope 0.48 pts per 1% return
+
+2. Scatter: Nasdaq-100 asset managers, weekly change vs QQQ weekly return
+  weeks 1059, spike weeks 106, spike weeks with QQQ down 99, mean QQQ return in spike weeks -3.72%
+  fitted on all weeks: change = -0.05 -0.19*spike +0.458*ret -0.0090*ret^2
+  matched within +/-0.5 pts of QQQ return: 95 spike weeks, spike minus matched ordinary weeks -0.08 (-0.91 to +0.75); left out 11
+  matched within +/-0.75 pts of QQQ return: 95 spike weeks, spike minus matched ordinary weeks -0.16 (-0.96 to +0.65); left out 11
+  matched within +/-1.0 pts of QQQ return: 95 spike weeks, spike minus matched ordinary weeks -0.14 (-0.93 to +0.66); left out 11
+  spike weeks left out at +/-0.75 (no close ordinary match):
+    2008-01-08, 2008-10-07, 2008-11-11, 2015-08-25, 2018-12-24, 2020-02-25, 2020-03-17, 2020-09-08, 2022-04-26, 2022-06-14, 2025-04-08
+  (threshold check, not used in the story) QQQ <= -2%: ordinary 95 weeks, mean return -3.43%, mean change -1.92 | spike 79 weeks, mean return -4.78%, mean change -2.69
+  (threshold check, not used in the story) QQQ <= -3%: ordinary 46 weeks, mean return -4.48%, mean change -2.11 | spike 60 weeks, mean return -5.52%, mean change -3.05
+  (threshold check, not used in the story) QQQ <= -4%: ordinary 25 weeks, mean return -5.41%, mean change -2.73 | spike 41 weeks, mean return -6.46%, mean change -3.34
+
+4. Weeks around a spike, spikes not followed by another spike, raw vs price held fixed
+       index  h  n_spike   raw  raw_lo  raw_hi  ctrl  ctrl_lo  ctrl_hi
+         Dow -2       91 -0.51   -1.17    0.16 -0.33    -1.02     0.36
+         Dow -1       91 -0.09   -0.78    0.60  0.04    -0.76     0.84
+         Dow  0       91 -1.81   -2.58   -1.05 -0.04    -0.93     0.85
+         Dow  1       91  0.73    0.08    1.39 -0.04    -0.78     0.70
+         Dow  2       91 -0.16   -0.94    0.61 -0.57    -1.42     0.28
+         Dow  3       91  0.84    0.05    1.62  0.51    -0.32     1.34
+         Dow  4       91 -0.28   -1.13    0.56 -0.08    -0.98     0.83
+  Nasdaq-100 -2       92  0.13   -0.69    0.94  0.17    -0.71     1.04
+  Nasdaq-100 -1       92  0.64   -0.10    1.39  0.60    -0.21     1.40
+  Nasdaq-100  0       92 -2.76   -3.60   -1.92 -0.43    -1.32     0.45
+  Nasdaq-100  1       92 -1.75   -2.54   -0.96 -1.35    -2.09    -0.61
+  Nasdaq-100  2       92  0.06   -0.68    0.80  0.35    -0.44     1.14
+  Nasdaq-100  3       92  0.58   -0.16    1.33  0.41    -0.35     1.16
+  Nasdaq-100  4       92 -0.06   -0.65    0.53  0.10    -0.59     0.79
+Russell 2000 -2       91  0.05   -0.60    0.69 -0.17    -0.75     0.42
+Russell 2000 -1       90 -0.19   -0.75    0.37  0.01    -0.47     0.49
+Russell 2000  0       90 -2.24   -2.91   -1.57 -0.18    -0.76     0.40
+Russell 2000  1       90 -0.75   -1.43   -0.06  0.02    -0.60     0.63
+Russell 2000  2       90  0.41   -0.28    1.09  0.58    -0.05     1.21
+Russell 2000  3       90  0.37   -0.31    1.05  0.07    -0.53     0.67
+Russell 2000  4       90  0.46   -0.17    1.09  0.52    -0.09     1.14
+     S&P 500 -2       91  0.05   -0.40    0.50 -0.16    -0.57     0.26
+     S&P 500 -1       91 -0.14   -0.57    0.29 -0.07    -0.50     0.35
+     S&P 500  0       91 -2.28   -2.72   -1.84 -0.64    -1.08    -0.20
+     S&P 500  1       91 -0.27   -0.73    0.19 -0.40    -0.85     0.04
+     S&P 500  2       91  0.24   -0.18    0.65  0.09    -0.32     0.50
+     S&P 500  3       91  0.08   -0.37    0.53  0.11    -0.34     0.56
+     S&P 500  4       91 -0.03   -0.48    0.42 -0.07    -0.49     0.36
+  check: week +1 matches A4 price_control(horizon=1, drop_back_to_back=True) for all four indexes
+  mean ETF return the week after a spike: {'S&P 500': 0.96, 'Nasdaq-100': 1.03, 'Dow': 0.82, 'Russell 2000': 0.72} | share of those weeks the ETF fell: {'S&P 500': 31.87, 'Nasdaq-100': 33.7, 'Dow': 31.87, 'Russell 2000': 41.11}
+  Nasdaq-100 week +1 raw: net -1.75 = closing longs -1.22 + adding shorts -0.52
+  Nasdaq-100 week +1 ctrl: net -1.35 = closing longs -0.89 + adding shorts -0.46
+
+5. Week after, price held fixed, across choices (spikes not followed by another spike)
+  As in this story: own vol, top 10%, 2006 to 2026   Nasdaq -1.35 (-2.09 to -0.61), n=92 | S&P 500 -0.40, Dow -0.04, Russell 2000 +0.02
+  Top 5% of vol jumps                                Nasdaq -1.46 (-2.66 to -0.26), n=51 | S&P 500 -0.31, Dow +0.43, Russell 2000 +0.51
+  Top 15%                                            Nasdaq -1.32 (-1.96 to -0.69), n=130 | S&P 500 -0.26, Dow -0.29, Russell 2000 -0.27
+  Top 20%                                            Nasdaq -1.15 (-1.70 to -0.60), n=171 | S&P 500 -0.23, Dow -0.01, Russell 2000 -0.34
+  Top 25%                                            Nasdaq -0.96 (-1.47 to -0.45), n=208 | S&P 500 -0.30, Dow +0.01, Russell 2000 -0.14
+  Vol jumps ranked in points, not percent            Nasdaq -1.06 (-1.89 to -0.23), n=86 | S&P 500 -0.31, Dow +0.06, Russell 2000 -0.10
+  Same VIX spike weeks for all four indexes          Nasdaq -0.98 (-1.71 to -0.25), n=91 | S&P 500 -0.40, Dow -0.00, Russell 2000 +0.09
+  Without Sep to Nov 2008 and Mar 2020               Nasdaq -1.51 (-2.23 to -0.78), n=89 | S&P 500 -0.48, Dow +0.04, Russell 2000 -0.04
+  2006 to 2019 only                                  Nasdaq -1.73 (-2.72 to -0.73), n=64 | S&P 500 -0.41, Dow -0.17, Russell 2000 -0.12
+  2020 to 2026 only                                  Nasdaq -0.47 (-1.57 to +0.63), n=28 | S&P 500 -0.59, Dow +0.50, Russell 2000 +0.24
+
+  Controlled week-after difference, Nasdaq-100 minus S&P 500 (bootstrap over report dates):
+    As in this story: own vol, top 10%, 2006 to 2026   -0.95 (-1.68 to -0.21), p = 0.018
+    Same VIX spike weeks for all four indexes          -0.57 (-1.26 to +0.12), p = 0.126
+    2006 to 2019 only                                  -1.32 (-2.25 to -0.37), p = 0.008
+    2020 to 2026 only                                  +0.12 (-1.02 to +1.52), p = 0.818
+
+wrote story_data.json and story_data.js (site folder) and build/story_numbers.txt

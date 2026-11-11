@@ -1,0 +1,38 @@
+Steelman checks. Asset managers, change in net position in points of last week's open interest.
+Spike week: top 10% of weekly % rises in the index's own implied vol. Realized vol: 20-day, annualized, from daily ETF closes.
+
+Argument 1: one common deleveraging across the four indexes?
+  weeks that are spikes in all four indexes (61 weeks): average pairwise correlation of the four indexes' changes +0.36; of their ETF returns +0.90; of the changes with each index's own price move held fixed +0.26
+  weeks that are a spike in no index (895 weeks): average pairwise correlation of the four indexes' changes +0.23; of their ETF returns +0.81; of the changes with each index's own price move held fixed +0.12
+  mean change in the shared spike weeks, as reported vs with own price move held fixed (vs the no-spike-week mean):
+    S&P 500       as reported -2.81 (-3.48 to -2.15), n=61 | held fixed -0.48 (-1.08 to +0.13), n=61
+    Nasdaq-100    as reported -2.90 (-4.03 to -1.76), n=61 | held fixed -0.12 (-1.18 to +0.93), n=61
+    Dow           as reported -2.06 (-2.96 to -1.17), n=61 | held fixed +0.19 (-0.68 to +1.06), n=61
+    Russell 2000  as reported -3.18 (-4.01 to -2.34), n=61 | held fixed -0.53 (-1.27 to +0.21), n=61
+
+Argument 2: does a bigger vol rise mean more selling at the same price move? (all weeks, HC1 intervals)
+  change = a + b*vol_measure + c*ret + d*ret^2; b scaled to a 10-point rise (implied: 10% rise in the index's own vol index; realized: 10 points of annualized 20-day realized vol)
+  S&P 500       n=1059 | implied %: alone -0.57 (-0.67 to -0.48), price held fixed -0.13 (-0.24 to -0.02) | realized pts: alone -1.29 (-1.74 to -0.83), price held fixed -0.56 (-0.96 to -0.16)
+  Nasdaq-100    n=1059 | implied %: alone -0.70 (-0.88 to -0.51), price held fixed +0.10 (-0.16 to +0.36) | realized pts: alone -1.66 (-2.37 to -0.95), price held fixed -0.81 (-1.44 to -0.19)
+  Dow           n=1059 | implied %: alone -0.59 (-0.73 to -0.44), price held fixed -0.00 (-0.20 to +0.19) | realized pts: alone +0.01 (-0.86 to +0.89), price held fixed +0.83 (+0.08 to +1.58)
+  Russell 2000  n=1055 | implied %: alone -0.86 (-1.02 to -0.70), price held fixed -0.03 (-0.23 to +0.18) | realized pts: alone -1.07 (-1.68 to -0.47), price held fixed -0.48 (-0.97 to +0.02)
+  threshold check, Nasdaq-100: spike weeks by size of the VXN jump, change with price held fixed (residual from the ordinary-week curve)
+    VXN up 14.7% to 25%    +0.05 (-0.79 to +0.88), n=69
+    up 25% to 40%          -0.31 (-2.15 to +1.53), n=29
+    up 40% or more         +0.47 (-2.66 to +3.60), n=8
+
+Argument 3: is the Nasdaq-100 week-after selling delayed vol-targeting?
+  vol in the week after an isolated spike (spike not followed by another spike), mean and 95% interval:
+    S&P 500       implied vol change in week +1 -9.60 (-12.26 to -6.95), n=91 % | realized vol change in week +1 +1.99 (+1.09 to +2.90), n=91 pts | realized vol change in the spike week +2.50 (+1.39 to +3.60), n=91 pts
+    Nasdaq-100    implied vol change in week +1 -7.47 (-9.59 to -5.36), n=92 % | realized vol change in week +1 +1.98 (+1.11 to +2.85), n=92 pts | realized vol change in the spike week +2.76 (+1.63 to +3.88), n=92 pts
+    Dow           implied vol change in week +1 -8.09 (-10.50 to -5.68), n=91 % | realized vol change in week +1 +2.06 (+1.27 to +2.85), n=91 pts | realized vol change in the spike week +2.30 (+1.16 to +3.44), n=91 pts
+    Russell 2000  implied vol change in week +1 -6.46 (-8.46 to -4.47), n=90 % | realized vol change in week +1 +2.10 (+1.32 to +2.88), n=90 pts | realized vol change in the spike week +2.78 (+1.58 to +3.99), n=90 pts
+  Nasdaq-100 week-after change with both weeks' returns held fixed, split by what vol did in week +1:
+    all isolated spikes: -1.35 (-2.10 to -0.60), n=92 (matches the story's -1.35)
+    VXN kept rising or fell less than the median (-8.1%) in week +1 -0.86 (-1.91 to +0.19), n=46
+    VXN fell more than the median in week +1                       -1.84 (-2.91 to -0.77), n=46
+    realized vol rose in week +1                                   -1.33 (-2.26 to -0.40), n=69
+    realized vol fell in week +1                                   -1.41 (-2.54 to -0.28), n=23
+    slope of week-after selling on week +1 VXN change, per 10%: +0.15 (-0.62 to +0.91)
+  same check for the S&P 500, where vol-targeting funds hold the most futures:
+    S&P 500 all isolated spikes -0.40 (-0.80 to -0.01), n=91 | realized vol rose in week +1 -0.43 (-0.88 to +0.02), n=68 | fell -0.33 (-1.17 to +0.50), n=23

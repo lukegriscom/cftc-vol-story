@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mostly Old News: what Friday's CFTC report says after a volatility spike</title>
+<meta name="description" content="After an implied-volatility spike, the asset-manager selling in Friday's CFTC report is mostly what the price drop already predicted. The Nasdaq-100 is the exception.">
+<meta name="author" content="Luke Griscom">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<header class="masthead">
+  <p class="kicker">A data story &middot; CFTC Traders in Financial Futures, 2006 to 2026</p>
+  <h1>Mostly Old News</h1>
+  <p class="dek">After an implied-volatility spike, the asset-manager selling in Friday's CFTC report is mostly what the price drop alone predicts. In the Nasdaq-100 it keeps going the following week, though that pattern is weaker since 2020.</p>
+  <p class="byline">By Luke Griscom &middot; November 2026 &middot; <a class="static-link" href="?static=1">Read without scrolling effects</a></p>
+</header>
+
+<main>
+<section class="prose">
+  <p class="lede">At 3:30 on Friday afternoon, the CFTC publishes who held equity index futures as of Tuesday's close. In a week when implied volatility has jumped, the report almost always shows the same thing: asset managers sold.</p>
+  <p>If you trade Nasdaq-100 futures, that line raises a practical question before the weekend. Is it a record of selling that is finished, or the first sign of selling that is still coming?</p>
+  <p>Two Fridays show why the question is hard.</p>
+</section>
+
+<section class="two-fridays" aria-label="Two example reports">
+  <div class="friday">
+    <p class="friday-date">Friday, February 9, 2018</p>
+    <p class="friday-context">The week of the short-volatility blowup. VXN, the Nasdaq-100's implied volatility index, closed Tuesday at 26.7, up 31%.</p>
+    <dl>
+      <div><dt>In that report</dt><dd><span class="num">&minus;2.76</span> asset managers' net Nasdaq-100 position</dd></div>
+      <div><dt>In the next one</dt><dd><span class="num">&minus;12.12</span> more, flipping them from net long to net short</dd></div>
+    </dl>
+  </div>
+  <div class="friday">
+    <p class="friday-date">Friday, April 11, 2025</p>
+    <p class="friday-context">The week of the tariff selloff. VXN closed Tuesday at 39.6, up 60%.</p>
+    <dl>
+      <div><dt>In that report</dt><dd><span class="num">&minus;4.13</span> asset managers' net Nasdaq-100 position</dd></div>
+      <div><dt>In the next one</dt><dd><span class="num">+1.02</span> they bought some back</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="prose">
+  <p>Neither week is typical: the 2018 follow-up was one of the six largest weekly sales in twenty years. But 1,060 weekly reports since June 2006 can say which one is closer to the rule, and the answer depends on what you hold fixed.</p>
+  <p class="howto"><b>How to read the numbers.</b> Each figure is the change in asset managers' net position (longs minus shorts) from one Tuesday to the next, as a percent of the prior week's open interest, so contracts of different sizes compare. A <b>spike week</b> is one of the 10% largest weekly percentage jumps in the index's own implied volatility: VIX for the S&amp;P 500, VXN for the Nasdaq-100, VXD for the Dow, RVX for the Russell 2000. That gives 106 spike weeks per index (105 usable in the Russell 2000, where one falls in a week when its futures were switching exchanges).</p>
+  <h2><span class="secnum">1</span>The selling everyone sees</h2>
+</section>
+
+<section class="scrolly" data-chart="bars">
+  <div class="graphic">
+    <figure class="frame">
+      <figcaption>
+        <span class="ftitle">Spike-week selling, as the report shows it</span>
+        <span class="fsub">Asset managers' change in net position in spike weeks, minus an ordinary week, in points of open interest. 105 to 106 spike weeks per index. Lines are 95% intervals.</span>
+      </figcaption>
+      <div class="chart"></div>
+      <div class="legend"></div>
+    </figure>
+  </div>
+  <div class="steps">
+    <div class="step" data-state="raw"><div class="card">
+      <p>Start with what the report shows. In spike weeks since 2006, asset managers cut their net position by about 2 points of open interest more than in an ordinary week: from 1.84 in the Dow to 2.47 in the Russell 2000. Every interval sits well below zero.</p>
+    </div></div>
+    <div class="step" data-state="raw-note"><div class="card">
+      <p>The familiar explanation is mechanical. Funds that target a fixed level of volatility must cut exposure when volatility rises, and forced selling takes days to finish. If that is what these bars show, Friday's selling is a warning about next week.</p>
+      <p>But volatility rarely jumps on its own.</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="prose"><h2><span class="secnum">2</span>Spike weeks are down weeks</h2></section>
+
+<section class="scrolly" data-chart="scatter">
+  <div class="graphic">
+    <figure class="frame">
+      <figcaption>
+        <span class="ftitle">Nasdaq-100: every week since June 2006</span>
+        <span class="fsub">Asset managers' change in net position (points of open interest) against QQQ's return that week. 1,059 weeks.</span>
+      </figcaption>
+      <div class="chart"></div>
+      <div class="legend"></div>
+    </figure>
+  </div>
+  <div class="steps">
+    <div class="step" data-state="all"><div class="card">
+      <p>Here is every week for Nasdaq-100 asset managers: the change in their net position against QQQ's return that week. When QQQ falls, they tend to sell. When it rises, they tend to buy.</p>
+    </div></div>
+    <div class="step" data-state="spikes"><div class="card">
+      <p>Now light up the 106 spike weeks. QQQ fell in 99 of them, by 3.72% on average. Volatility spikes and price drops arrive together, so a spike week is almost always a big down week.</p>
+    </div></div>
+    <div class="step" data-state="fit"><div class="card">
+      <p>So compare like with like. The curve is what asset managers do in an ordinary week, given QQQ's move: roughly half a point of selling for each 1% drop, bending a little at the extremes. Spike weeks sit on it, on average 0.19 points below, a gap the data cannot tell from zero.</p>
+      <p>Matching gives the same answer without a curve. Pair each spike week with the ordinary weeks when QQQ moved within 0.75 points of it: asset managers sold 0.16 points more in the spike weeks, with an interval from &minus;0.96 to +0.65.</p>
+      <p>A down week looks the same with or without the vol spike.</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="prose"><h2><span class="secnum">3</span>Hold the price fixed</h2></section>
+
+<section class="scrolly" data-chart="bars">
+  <div class="graphic">
+    <figure class="frame">
+      <figcaption>
+        <span class="ftitle">The same selling, with the week's price move held fixed</span>
+        <span class="fsub">Spike week minus an ordinary week, points of open interest. Light bars as reported; dark bars holding the ETF's return that week fixed. Lines are 95% intervals.</span>
+      </figcaption>
+      <div class="chart"></div>
+      <div class="legend"></div>
+    </figure>
+  </div>
+  <div class="steps">
+    <div class="step" data-state="recap"><div class="card">
+      <p>So return to the four bars with a different question: how much of the spike-week selling is left once you account for the ETF's move that week?</p>
+    </div></div>
+    <div class="step" data-state="ctrl"><div class="card">
+      <p>Most of it disappears. Holding the return fixed removes 70% of the gap in the S&amp;P 500, 85% in the Russell 2000, 92% in the Nasdaq-100 and 95% in the Dow. In three of the four, what is left cannot be told from zero.</p>
+    </div></div>
+    <div class="step" data-state="ctrl-spx"><div class="card">
+      <p>The S&amp;P 500 keeps a residue: 0.71 points the price does not account for, with an interval from 0.27 to 1.14. If vol-driven selling shows up anywhere in the spike week, it is here, in the most liquid of the four contracts.</p>
+      <p>It is under a third of the raw figure, and it is already in the report you are reading.</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="prose">
+  <p>For a Friday reader, that is half the answer. The spike-week selling in the report is mostly what the price move predicted, and you saw the price move days before the report came out. In the S&amp;P 500, Dow and Russell 2000, the report adds little you did not already know.</p>
+  <p>The Nasdaq-100 is different, and the difference shows up a week later.</p>
+  <h2><span class="secnum">4</span>The week after, in the Nasdaq-100</h2>
+</section>
+
+<section class="scrolly" data-chart="path">
+  <div class="graphic">
+    <figure class="frame">
+      <figcaption>
+        <span class="ftitle">The weeks around a spike</span>
+        <span class="fsub">Asset managers' change in net position minus an ordinary week, points of open interest. Spikes not followed by another spike: 92 in the Nasdaq-100, 90 to 91 elsewhere.</span>
+      </figcaption>
+      <div class="chart"></div>
+      <div class="legend"></div>
+    </figure>
+  </div>
+  <div class="steps">
+    <div class="step" data-state="raw"><div class="card">
+      <p>Follow the same spikes forward. Week 0 is the spike week, the one in Friday's report. Week +1 runs from that Tuesday to the next, and the report comes out partway through it, on Friday afternoon.</p>
+      <p>As reported, all four indexes drop in the spike week. A week later the S&amp;P 500 is near zero, the Dow buys some back and the Russell 2000 sells a little more. The Nasdaq-100 keeps selling the most: 1.75 points in week +1.</p>
+    </div></div>
+    <div class="step" data-state="ctrl"><div class="card">
+      <p>Now hold both weeks' ETF returns fixed. The spike-week dips flatten, as the bars did. The Nasdaq-100's week +1 does not: &minus;1.35, with an interval from &minus;2.09 to &minus;0.61.</p>
+      <p>The Russell 2000's extra selling was the price, and it drops to zero. In the other three indexes the week after ends within 0.40 points of zero.</p>
+    </div></div>
+    <div class="step" data-state="ctrl-legs"><div class="card">
+      <p>This is selling into a recovery. QQQ rose 1.03% on average in the week after a spike, which by itself predicts buying.</p>
+      <p>Most of the selling is asset managers closing longs: 0.89 of the 1.35 points, with 0.46 from adding shorts. By week +2 it is over.</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="prose"><h2><span class="secnum">5</span>How much to trust it</h2></section>
+
+<section class="scrolly" data-chart="forest">
+  <div class="graphic">
+    <figure class="frame">
+      <figcaption>
+        <span class="ftitle">Nasdaq-100 week-after selling, under other choices</span>
+        <span class="fsub">Week-after change with both weeks' returns held fixed, points of open interest. Dot and line: Nasdaq-100 with 95% interval. Gray ticks: the other three indexes.</span>
+      </figcaption>
+      <div class="chart"></div>
+      <div class="legend"></div>
+    </figure>
+  </div>
+  <div class="steps">
+    <div class="step" data-state="robust"><div class="card">
+      <p>A pattern found by exploring twenty years of data deserves suspicion, so here it is under every reasonable change I could make. Tighter or looser spike cutoffs, ranking jumps in points, giving every index the same VIX spike weeks, dropping the 2008 crisis and March 2020: it stays below zero in every one, between &minus;0.96 and &minus;1.51.</p>
+      <p>One caution: with the same VIX weeks for all four, its gap over the S&amp;P 500 is no longer clear of zero.</p>
+    </div></div>
+    <div class="step" data-state="era"><div class="card">
+      <p>The split by era is where it weakens. From 2006 to 2019 the week-after selling is &minus;1.73. From 2020 to 2026 it is &minus;0.47, with an interval from &minus;1.57 to +0.63, about the same as the S&amp;P 500's &minus;0.59.</p>
+      <p>That rests on 28 spikes: too few to say the pattern is gone, and too few to say it is still there.</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="prose closing">
+  <h2>What to do with Friday's report</h2>
+  <p>Read the spike-week selling in Friday's report as history. In every index it is mostly the selling the price move predicted, and the price moved before you read about it.</p>
+  <p>The Nasdaq-100 is the one place where the report has said something about the following week. Across the full sample, asset managers there kept closing longs into the rebound after a vol spike, by 1.35 points of open interest beyond what both weeks' prices explain. Treat that as a lean, not a signal. It rests mostly on 2006 to 2019, and the 28 spikes since then cannot confirm it.</p>
+  <p>And for whether a selloff is still running, the order book and market depth will tell you more than a positioning report that is three days old.</p>
+
+  <h2>What this story cannot show</h2>
+  <p><b>Why they sold.</b> Holding the price fixed shows that spike-week selling looks like ordinary down-week selling. It cannot show which came first. If volatility-targeting funds sold and their selling pushed the price down, holding the price fixed would hide the very effect it is meant to test. Only 7 of the 106 Nasdaq-100 spike weeks had QQQ rising, too few to pull the two apart. One check points the other way: at the same weekly price move, weeks when 20-day realized volatility rose more saw somewhat more selling in the S&amp;P 500 and Nasdaq-100, though not in the Dow. That is why this story claims the report adds little beyond the price, not that volatility-targeting funds are absent. "Asset manager" is also a CFTC category that includes pensions, mutual funds and insurers, not only volatility-targeting strategies.</p>
+  <p><b>When in the week.</b> Positions are Tuesday snapshots. Week +1 runs Tuesday to Tuesday, so Wednesday through Friday afternoon pass before the report is published. The data cannot say how much of the Nasdaq-100 follow-through is still ahead of you at 3:30 on Friday.</p>
+  <p><b>Anything outside futures.</b> These are futures positions only. Exposure moved through options, ETFs or cash equities does not appear.</p>
+
+  <h2>What would prove it wrong</h2>
+  <p>Take the next 20 Nasdaq-100 spike weeks that are not followed by another spike. If asset managers' week-after change, with both weeks' ETF returns held fixed, averages zero or higher, the Nasdaq-100 exception is gone. If, in the spike weeks themselves, holding the return fixed leaves half or more of the raw selling in place across the four indexes, the rest of the claim fails too.</p>
+</section>
+
+<section class="prose about">
+  <h2>About the data</h2>
+  <p><b>Positions.</b> CFTC Traders in Financial Futures, futures only: E-mini S&amp;P 500, E-mini Nasdaq-100, E-mini Dow ($5) and Russell 2000 mini, stitched across its moves from CME to ICE in 2008 and back in 2017. Weekly, June 13, 2006 to September 29, 2026.</p>
+  <p><b>Implied volatility.</b> Cboe VIX, VXN, VXD and RVX daily closes from FRED, matched to each report's Tuesday.</p>
+  <p><b>Prices.</b> Weekly returns of SPY, QQQ, DIA and IWM from Yahoo Finance, an interim source until CRSP data replaces it.</p>
+  <p><b>Method.</b> "Held fixed" means a regression of the weekly change on a spike-week indicator, the ETF's return that week and its square. For the week after, the regression also holds the spike week's own return fixed. Intervals are 95%, from heteroskedasticity-robust standard errors. In section 4, spikes followed by another spike are left out so that week +1 is never itself a spike week, which is why its spike-week values differ slightly from section 3's.</p>
+  <p><b>Code.</b> Every number on this page comes from <code>build/story_numbers.py</code> in the <a href="https://github.com/lukegriscom/cftc-vol-story">project repository</a>, which reuses the analysis code behind an exploratory dashboard of the same data.</p>
+</section>
+
+<section class="prose numbers-wrap">
+  <h2>The numbers behind the charts</h2>
+  <div id="tables"></div>
+</section>
+</main>
+
+<footer class="foot"><p>Luke Griscom &middot; Stevens Institute of Technology &middot; Not investment advice.</p></footer>
+
+<script src="vendor/d3.min.js"></script>
+<script src="story_data.js"></script>
+<script src="story.js"></script>
+</body>
+</html>
